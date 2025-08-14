@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtakuPlayground</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">OtakuPlayground</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('categories')">Categories</a></li>
+            </ul>
+            <div class="user-menu">
+                <a href="#" onclick="showPage('login')" id="loginLink">Login</a>
+                <span id="userInfo" style="display: none;">Welcome, <span id="username"></span>!</span>
+            </div>
+        </nav>
+    </header>
+
+<!-- home page -->
+    <div id="home" class="page active">
+        <div class="container">
+            <div class="hero">
+                <h1>Welcome to OtakuPlayground!</h1>
+                <p>Make Japan's Culture Great Again!</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search manga..." id="searchInput">
+                </div>
+            </div>
+            
+            <div class="manga-grid" id="mangaGrid">
+            </div>
+        </div>
+    </div>
+
+<!-- detail page -->
+    <div id="detail" class="page">
+        <div class="container">
+            <div class="manga-detail">
+                <div class="detail-cover" id="detailCover">
+                    Manga Cover
+                </div>
+                <div class="detail-info">
+                    <h2 id="detailTitle">Manga Title</h2>
+                    <div class="detail-meta">
+                        <span>Action</span>
+                        <span>Adventure</span>
+                        <span>Ongoing</span>
+                    </div>
+                    <p id="detailDescription">
+                        sample
+                    </p>
+                </div>
+            </div>
+            
+            <div class="chapters-list">
+                <h3>Chapters</h3>
+                <div id="chaptersList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- reading page -->
+    <div id="reading" class="page">
+        <div class="container">
+            <div class="reading-controls">
+                <div class="chapter-info">
+                    <h3 id="currentChapter">Chapter 1</h3>
+                </div>
+                <div class="chapter-nav">
+                    <button class="btn" onclick="previousChapter()" id="prevBtn">Previous</button>
+                    <button class="btn" onclick="nextChapter()" id="nextBtn">Next</button>
+                </div>
+            </div>
+            
+            <div class="manga-pages" id="mangaPages">
+            </div>
+        </div>
+    </div>
+
+<!-- login page -->
+    <div id="login" class="page">
+        <div class="container">
+            <div class="login-container">
+                <form class="login-form" onsubmit="handleLogin(event)">
+                    <h2>Login to OtakuPlayground</h2>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script src="utils.js"></script> 
+</body>
+</html>
