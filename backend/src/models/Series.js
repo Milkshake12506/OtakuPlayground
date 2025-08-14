@@ -4,6 +4,7 @@ const SeriesSchema = new Schema({
   title: { type: String, required: true, trim: true },
   slug:  { type: String, required: true, trim: true, lowercase: true, unique: true },
   description: String,
+  price: { type:Number, default:0 },
   coverUrl: String,
   genres: [{ type: String, lowercase: true }],        // lưu slug của genre
   status: { type: String, enum: ['ongoing','completed','hiatus'], default: 'ongoing' },

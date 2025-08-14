@@ -7,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const { connectDB, mongoose } = require('./config/db');
 const genreRoutes = require('./routes/genreRoutes');
 const mangaRoutes  = require('./routes/mangaRoutes')
+const seriesRoutes = require('./routes/seriesRoutes');
+const path = require('path');
 
 const app = express();
 
@@ -40,6 +42,9 @@ app.get('/health', (_req, res) => {
 app.use('/auth', authRoutes);
 app.use('/api/genres', genreRoutes);
 app.use('/api/series', mangaRoutes);
+app.use('/api/series', seriesRoutes);
+app.use('/static', express.static(path.join(__dirname, '../../uploads')));
+
 
 // CHỈ start server SAU KHI DB OK
 const PORT = process.env.PORT || 3000;
