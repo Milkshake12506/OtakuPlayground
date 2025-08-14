@@ -1,0 +1,33 @@
+{
+  "name": "mangaweb",
+  "version": "1.0.0",
+  "description": "Manga reading web application",
+  "main": "backend/src/app.js",
+  "scripts": {
+    "start": "node backend/src/app.js",
+    "dev": "nodemon backend/src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["manga", "web", "reading", "nodejs", "express"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.17.1",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.14.3",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
