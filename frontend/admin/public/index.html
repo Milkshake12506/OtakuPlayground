@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Quản lý Manga</title>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <header>
+    <h1>🎭 Admin Panel - Quản lý Manga</h1>
+    <div class="muted">Chào admin!</div>
+  </header>
+
+  <main>
+    <!-- Tab Navigation -->
+    <div class="tabs">
+      <div class="tab active" data-tab="series-tab">Quản lý Series</div>
+      <div class="tab" data-tab="upload-cover-tab">Upload Cover</div>
+    </div>
+
+    <!-- Tab Content: Quản lý Series -->
+    <div id="series-tab" class="tab-content">
+      <div class="row" style="grid-template-columns: 1fr 2fr; gap: 20px;">
+        <!-- Form thêm/sửa series -->
+        <section class="card">
+          <h3 id="form-title">Thêm Series Mới</h3>
+          <form id="series-form">
+            <div style="margin-bottom: 12px;">
+              <label for="series-title">Tên series *</label>
+              <input type="text" id="series-title" required>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <label for="series-slug">Slug (URL) *</label>
+              <input type="text" id="series-slug" required>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <label for="series-desc">Mô tả</label>
+              <textarea id="series-desc" rows="4"></textarea>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <label for="series-genres">Thể loại (cách nhau bằng dấu phẩy)</label>
+              <input type="text" id="series-genres" placeholder="action, romance, comedy">
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <label for="series-status">Trạng thái</label>
+              <select id="series-status">
+                <option value="ongoing">Đang tiến hành</option>
+                <option value="completed">Hoàn thành</option>
+                <option value="hiatus">Tạm dừng</option>
+              </select>
+            </div>
+            
+            <div class="actions">
+              <button type="submit" class="primary" id="submit-btn">Tạo Series</button>
+              <button type="button" id="cancel-btn">Hủy</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Danh sách series -->
+        <section class="card">
+          <h3>Danh sách Series</h3>
+          <table id="series-table">
+            <thead>
+              <tr>
+                <th style="width:60px;">Cover</th>
+                <th>Tên & Slug</th>
+                <th>Mô tả</th>
+                <th>Thể loại</th>
+                <th>Trạng thái</th>
+                <th style="width:120px;">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="6" class="center muted">Đang tải...</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <!-- Tab Content: Upload Cover -->
+    <div id="upload-cover-tab" class="tab-content hidden">
+      <section class="card">
+        <h3>Upload ảnh bìa</h3>
+        <div class="row">
+          <div>
+            <label>Chọn Series</label>
+            <select id="cover-series"></select>
+          </div>
+          <div>
+            <label>Ảnh bìa</label>
+            <input type="file" id="cover-file" accept="image/*">
+          </div>
+        </div>
+        <div class="actions">
+          <button class="primary" id="cover-upload">Upload cover</button>
+        </div>
+        <p id="cover-result"></p>
+        <img id="cover-preview" style="max-height:160px;display:none;margin-top:8px;border-radius:8px;"/>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
