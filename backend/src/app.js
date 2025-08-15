@@ -9,6 +9,7 @@ const genreRoutes = require('./routes/genreRoutes');
 const mangaRoutes  = require('./routes/mangaRoutes')
 const seriesRoutes = require('./routes/seriesRoutes');
 const path = require('path');
+const chapterRoutes = require('./routes/chapterRoutes');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/auth', authRoutes);
 app.use('/api/genres', genreRoutes);
 app.use('/api', require('./routes/mangaRoutes'));
 app.use('/api/series', seriesRoutes);
+app.use('/api/series/:id/chapters', chapterRoutes);
 app.use('/static', express.static(path.join(__dirname, '../../uploads')));
 app.use('/admin', express.static(path.join(__dirname, '../../frontend/admin/public')));
 app.use('/', express.static(path.join(__dirname, '../../frontend/HomePage')));
