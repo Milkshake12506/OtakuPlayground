@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Series = require('../models/Series');
-const ensureAuth = require('../middleware/ensureAuth');
+const ensureAdmin = require('../middleware/ensureAdmin');
 
 /**
  * LIST + SEARCH
@@ -34,7 +34,7 @@ router.get('/:slug', async (req, res) => {
 });
 
 // CREATE
-router.post('/', ensureAuth, async (req, res) => {
+router.post('/', ensureAdmin, async (req, res) => {
   const { title, slug } = req.body;
   if (!title || !slug) return res.status(400).json({ error: 'title & slug are required' });
   try {
@@ -46,14 +46,14 @@ router.post('/', ensureAuth, async (req, res) => {
 });
 
 // UPDATE by id
-router.put('/:id', ensureAuth, async (req, res) => {
+router.put('/:id', ensureAdmin, async (req, res) => {
   const updated = await Series.findByIdAndUpdate(req.params.id, req.body, { new: true });
   if (!updated) return res.status(404).json({ error: 'Not found' });
   res.json(updated);
 });
 
 // DELETE by id
-router.delete('/:id', ensureAuth, async (req, res) => {
+router.delete('/:id', ensureAdmin, async (req, res) => {
   const deleted = await Series.findByIdAndDelete(req.params.id);
   if (!deleted) return res.status(404).json({ error: 'Not found' });
   res.json({ deleted: true });

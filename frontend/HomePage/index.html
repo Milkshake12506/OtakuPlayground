@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtakuPlayground</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- header -->
+    <!-- header -->
+<header class="header">
+  <nav class="nav">
+    <a class="logo" href="#" onclick="showPage('home'); return false;">OtakuPlayground</a>
+    <div class="nav-search">
+      <input type="text" placeholder="Search manga..." id="searchInput">
+    </div>
+
+    <!-- Cụm bên phải -->
+    <div class="nav-right">
+  <div id="authArea">
+    <div class="user-dropdown">
+      <a href="#" class="login-toggle" onclick="showPage('login'); return false;">Login</a>
+      <div class="dropdown-menu">
+        <a href="#" onclick="showPage('login'); return false;">Log in</a>
+        <a href="#" onclick="showPage('categories'); return false;">Categories</a>
+      </div>
+    </div>
+  </div>
+</div>
+  </nav>
+</header>
+
+
+<!-- home page -->
+    <div id="home" class="page active">
+        <div class="container">
+            <div class="hero">
+                <h1>Welcome to OtakuPlayground!</h1>
+                <p>Make Japan's Culture Great Again!</p>
+            </div>
+            
+            <div class="manga-grid" id="mangaGrid">
+            </div>
+        </div>
+    </div>
+
+<!-- detail page -->
+    <div id="detail" class="page">
+        <div class="container">
+            <div class="manga-detail">
+                <div class="detail-cover" id="detailCover">
+                    Manga Cover
+                </div>
+                <div class="detail-info">
+                    <h2 id="detailTitle">Manga Title</h2>
+                    <div class="detail-meta">
+                        <span>Action</span>
+                        <span>Adventure</span>
+                        <span>Ongoing</span>
+                    </div>
+                    <p id="detailDescription">
+                        sample
+                    </p>
+                </div>
+            </div>
+            
+            <div class="chapters-list">
+                <h3>Chapters</h3>
+                <div id="chaptersList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- reading page -->
+    <div id="reading" class="page">
+        <div class="container">
+            <div class="reading-controls">
+                <div class="chapter-info">
+                    <h3 id="currentChapter">Chapter 1</h3>
+                </div>
+                <div class="chapter-nav">
+                    <button class="btn" onclick="previousChapter()" id="prevBtn">Previous</button>
+                    <button class="btn" onclick="nextChapter()" id="nextBtn">Next</button>
+                </div>
+            </div>
+            
+            <div class="manga-pages" id="mangaPages">
+            </div>
+        </div>
+    </div>
+
+<!-- login page -->
+    <div id="login" class="page">
+        <div class="container">
+            <div class="login-container">
+                <form class="login-form" onsubmit="handleLogin(event)">
+                    <h2>Login to OtakuPlayground</h2>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                        <!-- GOOGLE CTA dưới password -->
+                            <div class="google-hero">
+                            <a class="google-cta" href="/auth/google">
+                                <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path fill="#FFC107" d="M43.6 20.5h-1.9V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.9 0-12.5-5.6-12.5-12.5S17.1 11 24 11c3.2 0 6.2 1.2 8.4 3.2l5.7-5.7C34.6 5.6 29.6 3.5 24 3.5 12 3.5 2.5 13 2.5 25S12 46.5 24 46.5 45.5 37 45.5 25c0-1.6-.2-3.1-.6-4.5z"/>
+                                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 16 18.9 13 24 13c3.2 0 6.2 1.2 8.4 3.2l5.7-5.7C34.6 5.6 29.6 3.5 24 3.5 15.4 3.5 8.1 8.4 6.3 14.7z"/>
+                                <path fill="#4CAF50" d="M24 46.5c5.3 0 10.2-2 13.8-5.3l-6.3-5.2C29.6 37.8 26.9 39 24 39c-5.3 0-9.7-3.4-11.3-8l-6.5 5C8.1 41.6 15.4 46.5 24 46.5z"/>
+                                <path fill="#1976D2" d="M43.6 20.5H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.5l6.3 5.2C40.6 36.3 45.5 31 45.5 25c0-1.6-.2-3.1-.6-4.5z"/>
+                                </svg>
+                                Tiếp tục với Google
+                            </a>
+                            </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script src="utils.js"></script> 
+</body>
+</html>

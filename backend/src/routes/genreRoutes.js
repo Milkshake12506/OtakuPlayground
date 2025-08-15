@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Genre = require('../models/Genre');
-const ensureAuth = require('../middleware/ensureAuth');
+const ensureAdmin = require('../middleware/ensureAdmin');
 
 // READ all
 router.get('/', async (_req, res) => {
@@ -9,7 +9,7 @@ router.get('/', async (_req, res) => {
 });
 
 // CREATE
-router.post('/', ensureAuth, async (req, res) => {
+router.post('/', ensureAdmin, async (req, res) => {
   const { name, slug } = req.body;
   if (!name || !slug) return res.status(400).json({ error: 'name & slug are required' });
   try {
@@ -21,14 +21,14 @@ router.post('/', ensureAuth, async (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', ensureAuth, async (req, res) => {
+router.put('/:id', ensureAdmin, async (req, res) => {
   const updated = await Genre.findByIdAndUpdate(req.params.id, req.body, { new: true });
   if (!updated) return res.status(404).json({ error: 'Not found' });
   res.json(updated);
 });
 
 // DELETE
-router.delete('/:id', ensureAuth, async (req, res) => {
+router.delete('/:id', ensureAdmin, async (req, res) => {
   const deleted = await Genre.findByIdAndDelete(req.params.id);
   if (!deleted) return res.status(404).json({ error: 'Not found' });
   res.json({ deleted: true });

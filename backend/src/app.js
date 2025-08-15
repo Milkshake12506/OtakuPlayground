@@ -26,12 +26,6 @@ app.use(passport.session());
 
 //route kiểm tra DB
 app.get('/health', (_req, res) => {
-  app.get('/debug-oauth', (_req, res) => {
-  res.json({
-    clientIdStart: (process.env.GOOGLE_CLIENT_ID || '').slice(0, 20),
-    callback: process.env.GOOGLE_CALLBACK_URL
-  });
-});
   const states = ['disconnected','connected','connecting','disconnecting','uninitialized'];
   res.json({
     ok: true,
@@ -39,11 +33,20 @@ app.get('/health', (_req, res) => {
   });
 });
 
+app.get('/debug-oauth', (_req, res) => {
+  res.json({
+    clientIdStart: (process.env.GOOGLE_CLIENT_ID || '').slice(0, 20),
+    callback: process.env.GOOGLE_CALLBACK_URL
+  });
+});
+
 app.use('/auth', authRoutes);
 app.use('/api/genres', genreRoutes);
-app.use('/api/series', mangaRoutes);
+app.use('/api', require('./routes/mangaRoutes'));
 app.use('/api/series', seriesRoutes);
 app.use('/static', express.static(path.join(__dirname, '../../uploads')));
+app.use('/admin', express.static(path.join(__dirname, '../../frontend/admin/public')));
+app.use('/', express.static(path.join(__dirname, '../../frontend/HomePage')));
 
 
 // CHỈ start server SAU KHI DB OK
